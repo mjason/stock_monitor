@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: 科大讯飞
+  stock_symbol: 002230.sz
+  security_type: 1
+  code: MyText
+  price_log: 
+
+two:
+  name: 京东方A
+  stock_symbol: 000725.sz
+  security_type: 1
+  code: MyText
+  price_log: 

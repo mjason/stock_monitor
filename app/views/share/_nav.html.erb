@@ -1,0 +1,29 @@
+<div class="navbar bg-base-100 shadow-sm top-0 z-30 sticky">
+  <div class="navbar-start">
+    <div class="dropdown">
+      <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+        <span class="icon-[charm--menu-hamburger] h-5 w-5"></span>
+      </div>
+      <ul
+        tabindex="0"
+        class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+        <li><%= link_to "主页", root_path %></li>
+        <li><%= link_to "策略", stock_strategies_path %></li>
+      </ul>
+    </div>
+  </div>
+  <div class="navbar-center">
+    <a class="btn btn-ghost text-xl"><%= content_for(:title) || "秋名山谷神" %></a>
+  </div>
+  <div class="navbar-end">
+    <button class="btn btn-ghost btn-circle">
+      <span class="icon-[charm--search] h-5 w-5"></span>
+    </button>
+    <button class="btn btn-ghost btn-circle">
+      <div class="indicator">
+        <span class="icon-[charm--bell] h-5 w-5"></span>
+        <span class="badge badge-xs badge-primary indicator-item"></span>
+      </div>
+    </button>
+  </div>
+</div>

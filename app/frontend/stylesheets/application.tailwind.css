@@ -1,0 +1,7 @@
+@import "tailwindcss";
+@plugin "daisyui";
+@plugin "@iconify/tailwind4";
+
+@source "../../../app/views/**/*.html.erb";
+@source "../../../app/views/**/*.rb";
+@source "../../../app/helpers/**/*.rb";

@@ -1,0 +1,30 @@
+<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
+<%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
+
+
+<div class="hero pt-16">
+  <div class="hero-content flex-col lg:flex-row-reverse">
+    <div class="card w-full max-w-sm shrink-0 shadow-2xl">
+      <div class="card-body">
+        <%= form_with url: session_path do |form| %>
+          <fieldset class="fieldset">
+            <label class="fieldset-label">Email</label>
+            <%= form.email_field :email_address, required: true,
+                                 autofocus: true, autocomplete: "username",
+                                 class: "input",
+                                 placeholder: "Email", value: params[:email_address] %>
+            <label class="fieldset-label">Password</label>
+            <%= form.password_field :password,
+                                    class: "input",
+                                    required: true, autocomplete: "current-password",
+                                    placeholder: "Enter your password", maxlength: 72 %><br>
+            <div>
+              <%= link_to "忘记密码", new_password_path, class: "link link-hover" %>
+            </div>
+            <%= form.submit "登陆", class: "btn btn-neutral mt-4" %>
+          </fieldset>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

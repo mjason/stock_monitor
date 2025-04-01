@@ -1,0 +1,58 @@
+<div class="flex w-full flex-col"
+     data-controller="code-editor"
+     data-code-editor-theme-value="vs-dark"
+     data-code-editor-language-value="ruby">
+  <%= form_with model: strategy do |f| %>
+    <% if strategy.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(strategy.errors.count, "error") %> prohibited this strategy from being saved:</h2>
+
+        <ul>
+          <% strategy.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="flex w-full">
+
+      <%= f.label :name, class: "input" do %>
+        名称
+        <%= f.text_field :name, class: "grow" %>
+      <% end %>
+
+      <div class="divider divider-horizontal"></div>
+
+      <%= f.label :stock_symbol, class: "input" do %>
+        代码
+        <%= f.text_field :stock_symbol, class: "grow" %>
+      <% end %>
+
+      <div class="divider divider-horizontal"></div>
+
+      <%= f.select :security_type,
+                   [%w[请选择类型 -1], %w[股票 stock], %w[ETF etf], %w[可转债 convertible_bond]],
+                   {disabled: -1, selected: -1},
+                   class: "select" %>
+      <div class="divider divider-horizontal"></div>
+
+      <%= f.label :active, class: "fieldset-label" do %>
+        <%= f.check_box :active, class: "checkbox", checked: "checked" %>
+        是否启用
+      <% end %>
+
+      <div class="divider divider-horizontal"></div>
+
+      <%= f.submit class: "btn btn-primary" %>
+
+    </div>
+
+    <div class="mt-4 w-full">
+      <%= f.hidden_field :code, data: { code_editor_target: "code" } %>
+
+      <div data-code-editor-target="editor" class="monaco-editor-container" style="width:100%; height:600px; border:1px solid #ccc;"></div>
+    </div>
+
+  <% end %>
+</div>

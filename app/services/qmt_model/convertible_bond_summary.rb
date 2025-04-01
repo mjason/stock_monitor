@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module QmtModel
-  class ConvertibleBondSummary
+  class ConvertibleBondSummary < Base
     # 可转换债券摘要类
     # 解析并存储可转债的关键信息，包括基本信息和募投项目。
 

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module QmtModel
-  class HistoricalStockData
+  class HistoricalStockData < Base
     # 历史股票数据类
     # 解析并存储某只股票的历史交易记录。
 

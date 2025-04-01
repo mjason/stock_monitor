@@ -13,11 +13,14 @@ class StockStrategiesController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
-
+    if @stock_strategy.update(stock_strategy_params)
+      redirect_to @stock_strategy, notice: "股票策略更新成功"
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def new

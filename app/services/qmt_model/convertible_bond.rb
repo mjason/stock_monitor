@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module QmtModel
-  class ConvertibleBond
+  class ConvertibleBond < Base
     # 可转换债券数据类
     # 解析并存储可转债的交易信息，包括价格、涨跌幅等数据。
 

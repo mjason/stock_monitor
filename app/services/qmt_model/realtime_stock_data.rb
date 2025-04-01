@@ -1,5 +1,5 @@
 module QmtModel
-  class RealtimeStockData
+  class RealtimeStockData < Base
     # 实时股票数据类
     # 解析并存储实时交易系统返回的股票数据，包括价格、交易量等信息。
 

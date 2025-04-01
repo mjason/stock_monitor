@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module QmtModel
-  class OrderSummary
+  class OrderSummary < Base
     # 证券委托单数据类
     # 解析并存储证券委托单的交易信息，包括订单编号、证券代码、委托价格等。
 

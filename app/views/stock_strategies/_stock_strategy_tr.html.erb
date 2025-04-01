@@ -1,0 +1,12 @@
+<tr id="<%= dom_id(stock_strategy) %>">
+  <th><%= stock_strategy.id %></th>
+  <td><%= link_to stock_strategy.name, stock_strategy_path(stock_strategy) %></td>
+  <td><%= stock_strategy.stock_symbol %></td>
+  <td><%= stock_strategy.security_type %></td>
+  <td><%= stock_strategy.latest_price %></td>
+  <td>
+    <%= link_to "查看", stock_strategy, class: "link link-accent" %>
+    <%= link_to "编辑", edit_stock_strategy_path(stock_strategy), class: "link link-primary" %>
+    <%= link_to "删除", stock_strategy_path(stock_strategy),
+                data: { turbo_confirm: "确定要删除吗？", turbo_method: :delete }, class: "link link-secondary" %>
+</tr>

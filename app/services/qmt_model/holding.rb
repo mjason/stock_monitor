@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module QmtModel
-  class Holding
+  class Holding < Base
     # 证券持仓信息类
     # 表示一个证券账户的持仓情况，包括证券代码、持仓数量、盈亏情况等。
 

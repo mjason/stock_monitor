@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module QmtModel
-  class Account
+  class Account < Base
 
     # 账户信息类
     # 表示用户的资金账户信息，包括账户类型、可用金额、总资产等。

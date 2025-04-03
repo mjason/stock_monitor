@@ -16,6 +16,7 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.13",
+    "lightweight-charts": "^5.0.5",
     "monaco-editor": "0.52.2",
     "rollup": "^4.38.0"
   }

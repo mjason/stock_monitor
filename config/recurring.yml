@@ -9,8 +9,23 @@
 #     priority: 2
 #     schedule: at 5am every day
 
-development:
+default: &default
   get_stock_latest_price:
     class: GetStockLatestPriceJob
     queue: background
     schedule: every 1 minute
+
+  sync_stock_histories_price:
+    class: FetchStockHistoriesJob
+    queue: background
+    schedule: at 4pm every day
+
+development:
+  <<: *default
+
+production:
+  <<: *default
+  get_stock_latest_price:
+    class: GetStockLatestPriceJob
+    queue: background
+    schedule: every 3 seconds

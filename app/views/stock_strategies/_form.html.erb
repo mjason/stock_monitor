@@ -33,7 +33,7 @@
 
       <%= f.select :security_type,
                    [%w[请选择类型 -1], %w[股票 stock], %w[ETF etf], %w[可转债 convertible_bond]],
-                   {disabled: -1, selected: -1},
+                   {disabled: -1, selected: (strategy.security_type || -1)},
                    class: "select" %>
       <div class="divider divider-horizontal"></div>
 

@@ -501,6 +501,11 @@ exsolve@^1.0.1:
   resolved "https://registry.yarnpkg.com/exsolve/-/exsolve-1.0.4.tgz#7de5c75af82ecd15998328fbf5f2295883be3a39"
   integrity sha512-xsZH6PXaER4XoV+NiT7JHp1bJodJVT+cxeSH1G0f0tlT0lJqYuHUP3bUx2HtfTDvOagMINYp8rsqusxud3RXhw==
 
+fancy-canvas@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/fancy-canvas/-/fancy-canvas-2.1.0.tgz#44b40e40419ad8ef8304df365e4276767e918552"
+  integrity sha512-nifxXJ95JNLFR2NgRV4/MxVP45G9909wJTEKz5fg/TZS20JJZA6hfgRVh/bC9bwl2zBtBNcYPjiBE4njQHVBwQ==
+
 fast-glob@^3.3.2:
   version "3.3.3"
   resolved "https://registry.yarnpkg.com/fast-glob/-/fast-glob-3.3.3.tgz#d06d585ce8dba90a16b0505c543c3ccfb3aeb818"
@@ -642,6 +647,13 @@ lightningcss@1.29.2:
     lightningcss-linux-x64-musl "1.29.2"
     lightningcss-win32-arm64-msvc "1.29.2"
     lightningcss-win32-x64-msvc "1.29.2"
+
+lightweight-charts@^5.0.5:
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/lightweight-charts/-/lightweight-charts-5.0.5.tgz#1c3e93958fa5a8355d82cebeca49ed49bc911e86"
+  integrity sha512-o6/EDBLgvijwPatPosGmeS6JPsqBN3JJ8Wi6j+Zo5E1rmMOsiv3jG8/wBHFN/aqqE6eFMeKWFtGfVjB2HJtvtQ==
+  dependencies:
+    fancy-canvas "2.1.0"
 
 local-pkg@^1.0.0:
   version "1.1.1"

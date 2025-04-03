@@ -9,3 +9,6 @@ application.register("code-editor", CodeEditorController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import StockChartController from "./stock_chart_controller"
+application.register("stock-chart", StockChartController)

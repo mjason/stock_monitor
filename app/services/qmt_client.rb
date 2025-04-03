@@ -30,6 +30,7 @@ class QmtClient
   end
 
   # 获取持仓信息
+  # @return [QmtModel::Holding] 持仓信息对象
   def positions
     QmtModel::Holding.from_api_response JSON.parse(Httpx.get(ENDPOINTS[:positions]).body.to_s)
   end
@@ -61,7 +62,6 @@ class QmtClient
       end_date: end_time,
       period: period
     })
-
     QmtModel::HistoricalStockData.from_api_response JSON.parse(response.body.to_s)
   end
 

@@ -14,6 +14,8 @@ class StockStrategy < ApplicationRecord
                           locals: { stock_strategy: self }
   end
 
+  alias security_code stock_symbol
+
   # 日志方法 - 添加新价格到价格日志
   def add_price(price)
     current_log = price_log || []
@@ -41,5 +43,9 @@ class StockStrategy < ApplicationRecord
   # 获取最新价格
   def latest_price
     latest_data&.last_price
+  end
+
+  def stock_history_data
+    self.histories&.fetch("records", [])
   end
 end

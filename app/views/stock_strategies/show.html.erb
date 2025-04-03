@@ -2,47 +2,9 @@
   <div class="card-body p-0">
     <div class="flex items-center gap-3 px-5 pt-5">
       <span class="icon-[charm--chart-line] size-4.5"></span>
-      <span class="font-medium">策略详细</span>
+      <span class="font-medium"><%= @stock_strategy.name %> - <%= @stock_strategy.latest_price %></span>
     </div>
-
-    <div class="grid grid-flow-col grid-rows-3 gap-4 m-5 font-bold text-white font-mono text-xl text-center">
-      <div class="col-span-2 grid place-content-center rounded-lg bg-blue-500 p-4">
-        <%= @stock_strategy.name %>
-      </div>
-      <div class="col-span-2 row-span-2 row-span-2 grid place-content-center rounded-lg bg-blue-500 p-4">
-        <%= @stock_strategy.stock_symbol %>
-      </div>
-      <div class="row-span-3 grid place-content-center rounded-lg bg-blue-500 p-4">
-        <%= @stock_strategy.latest_price %>
-      </div>
-    </div>
-
   </div>
-
-  <div class="mt-2 overflow-auto">
-    <table class="table">
-      <thead>
-      <tr>
-        <th>时间</th>
-        <th>最新成交价</th>
-        <th>开盘价</th>
-        <th>最高价</th>
-        <th>昨日收盘价</th>
-      </tr>
-      </thead>
-      <tbody>
-      <%= turbo_stream_from "stock_strategies_show" %>
-      <% @stock_strategy.get_realtime_data.each do |data| %>
-      <tr id="<%= dom_id @stock_strategy %>">
-        <th><%= data.timestamp %></th>
-        <td><%= data.last_price %></td>
-        <td><%= data.open %></td>
-        <td><%= data.high %></td>
-        <td><%= data.last_close %></td>
-      </tr>
-      <% end %>
-      </tbody>
-    </table>
-  </div>
-
+  <%= render partial: "stock_price_chart",
+             locals: { stock_data: @stock_strategy.stock_history_data.to_json } %>
 </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_01_063355) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_02_041335) do
   create_table "sessions", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "ip_address"
@@ -30,6 +30,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_01_063355) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.json "histories", default: []
     t.index ["name"], name: "index_stock_strategies_on_name", unique: true
     t.index ["stock_symbol"], name: "index_stock_strategies_on_stock_symbol", unique: true
     t.index ["user_id"], name: "index_stock_strategies_on_user_id"

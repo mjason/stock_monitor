@@ -1,0 +1,47 @@
+<!-- app/views/charts/_stock_price_chart.html.erb -->
+<div class="w-full" data-controller="stock-chart">
+  <div class="bg-white rounded-lg shadow-md p-4 mb-4 w-full">
+    <div class="flex space-x-2 mb-4">
+      <button data-action="click->stock-chart#showCandlestick" data-stock-chart-target="candlestickBtn" class="btn btn-primary">蜡烛图</button>
+      <button data-action="click->stock-chart#showLine" data-stock-chart-target="lineBtn" class="btn btn-neutral">线图</button>
+    </div>
+
+    <div data-stock-chart-target="chartContainer" class="w-full h-96 md:h-[500px]"></div>
+  </div>
+
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3">
+    <div class="bg-white p-3 rounded-lg shadow-sm">
+      <div class="text-xs text-gray-500">日期</div>
+      <div data-stock-chart-target="currentDate" class="text-base font-semibold text-gray-800">--</div>
+    </div>
+    <div class="bg-white p-3 rounded-lg shadow-sm">
+      <div class="text-xs text-gray-500">最新价</div>
+      <div data-stock-chart-target="latestPrice" class="text-base font-semibold">--</div>
+    </div>
+    <div class="bg-white p-3 rounded-lg shadow-sm">
+      <div class="text-xs text-gray-500">开盘价</div>
+      <div data-stock-chart-target="openPrice" class="text-base font-semibold text-gray-800">--</div>
+    </div>
+    <div class="bg-white p-3 rounded-lg shadow-sm">
+      <div class="text-xs text-gray-500">最高价</div>
+      <div data-stock-chart-target="highPrice" class="text-base font-semibold text-gray-800">--</div>
+    </div>
+    <div class="bg-white p-3 rounded-lg shadow-sm">
+      <div class="text-xs text-gray-500">最低价</div>
+      <div data-stock-chart-target="lowPrice" class="text-base font-semibold text-gray-800">--</div>
+    </div>
+    <div class="bg-white p-3 rounded-lg shadow-sm">
+      <div class="text-xs text-gray-500">成交量</div>
+      <div data-stock-chart-target="volume" class="text-base font-semibold text-gray-800">--</div>
+    </div>
+    <div class="bg-white p-3 rounded-lg shadow-sm">
+      <div class="text-xs text-gray-500">涨跌幅</div>
+      <div data-stock-chart-target="changePercent" class="text-base font-semibold">--</div>
+    </div>
+  </div>
+
+  <!-- 数据传递给Stimulus控制器 -->
+  <div data-stock-chart-target="stockData"
+       data-stock-data="<%= stock_data %>"
+       class="hidden"></div>
+</div>

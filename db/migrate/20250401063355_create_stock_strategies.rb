@@ -9,11 +9,12 @@ class CreateStockStrategies < ActiveRecord::Migration[8.0]
       t.boolean :active, default: true
 
       t.belongs_to :user, index: true
+      t.belongs_to :stock_position, index: true
 
       t.timestamps
     end
 
-    add_index :stock_strategies, :name, unique: true
-    add_index :stock_strategies, :stock_symbol, unique: true
+    add_index :stock_strategies, :name
+    add_index :stock_strategies, :stock_symbol
   end
 end

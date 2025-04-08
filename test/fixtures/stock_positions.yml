@@ -1,0 +1,31 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  account_type: 1
+  account_number: MyString
+  stock_code: MyString
+  holding_quantity: 1
+  available_quantity: 1
+  opening_price: 9.99
+  market_value: 9.99
+  frozen_quantity: 1
+  shares_in_transit: 1
+  yesterday_shares: 1
+  cost_price: 9.99
+  profit_loss: 9.99
+  profit_loss_ratio: 9.99
+
+two:
+  account_type: 1
+  account_number: MyString
+  stock_code: MyString
+  holding_quantity: 1
+  available_quantity: 1
+  opening_price: 9.99
+  market_value: 9.99
+  frozen_quantity: 1
+  shares_in_transit: 1
+  yesterday_shares: 1
+  cost_price: 9.99
+  profit_loss: 9.99
+  profit_loss_ratio: 9.99

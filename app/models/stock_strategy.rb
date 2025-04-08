@@ -2,6 +2,9 @@ class StockStrategy < ApplicationRecord
   # 枚举定义
   enum :security_type, { stock: 0, etf: 1, convertible_bond: 2 }
 
+  belongs_to :user, optional: true
+  belongs_to :stock_position, optional: true
+
   # 验证
   validates :name, presence: true
   validates :stock_symbol, presence: true, uniqueness: true
@@ -14,7 +17,10 @@ class StockStrategy < ApplicationRecord
                           locals: { stock_strategy: self }
   end
 
-  alias security_code stock_symbol
+  after_create_commit do
+    StockDailyPrice.sync_all stock_symbol
+  end
+
 
   # 日志方法 - 添加新价格到价格日志
   def add_price(price)
@@ -30,14 +36,14 @@ class StockStrategy < ApplicationRecord
   end
 
   def get_realtime_data
-    price_log&.map do |price|
+    price_log.map do |price|
       QmtModel::RealtimeStockData.new(**price.symbolize_keys)
     end
   end
 
   def latest_data
     return nil if price_log.blank?
-    QmtModel::RealtimeStockData.new(**price_log&.last&.symbolize_keys)
+    QmtModel::RealtimeStockData.new(**price_log.last&.symbolize_keys)
   end
 
   # 获取最新价格
@@ -46,6 +52,23 @@ class StockStrategy < ApplicationRecord
   end
 
   def stock_history_data
-    self.histories&.fetch("records", [])
+    StockDailyPrice.where(ts_code: stock_symbol)
+                   .order(trade_date: :asc).map do |data|
+      {
+        time: data.trade_date,
+        open: data.open,
+        high: data.high,
+        low: data.low,
+        close: data.close,
+        volume: data.vol
+      }
+    end
   end
+
+  def ta_data
+    stock_history_data&.map do |data|
+      data.transform_keys { |k| k == "time" ? "date_time" : k }
+    end
+  end
+
 end

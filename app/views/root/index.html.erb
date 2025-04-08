@@ -1,2 +1,50 @@
-<h1>Root#index</h1>
-<p>Find me in app/views/root/index.html.erb</p>
+<% title "持仓" %>
+<%= turbo_stream_from "stock_positions_index" %>
+
+<div class="card bg-base-100 shadow">
+  <div class="card-body p-0">
+    <div class="flex items-center gap-3 px-5 pt-5">
+      <span class="icon-[charm--chart-line] size-4.5"></span>
+      <span class="font-medium">持仓列表</span>
+      <% profit_sum = @positions.sum(&:profit_loss) %>
+      <span id="profit_sum"
+        class="font-medium ms-auto <%= profit_sum > 0 ? 'text-red-400' : 'text-green-400' %>">
+        <%= number_to_currency profit_sum, unit: "" %>
+      </span>
+    </div>
+  </div>
+
+  <div class="mt-2 overflow-auto">
+    <div class="overflow-x-auto">
+      <table class="table">
+        <thead>
+        <tr>
+          <th></th>
+          <th>名称</th>
+          <th>代码</th>
+          <th>最新价格</th>
+          <th>成本价</th>
+          <th>盈亏</th>
+          <th>可用数量</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @positions.each do |position| %>
+          <tr id="<%= dom_id(position) %>">
+            <th><%= position.id %></th>
+            <td><%= position.stock_name %></td>
+            <td><%= position.stock_code %></td>
+            <td><%= number_to_currency position.last_price, unit: "" %></td>
+            <td><%= number_to_currency position.cost_price, unit: "" %></td>
+            <td class="<%= position.profit_loss > 0 ? 'text-red-400' : 'text-green-400' %>">
+              <%= number_to_currency position.profit_loss, unit: "" %>
+            </td>
+            <td><%= position.available_quantity %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

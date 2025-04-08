@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ts_code: MyString
+  trade_date: MyString
+  open: 1.5
+  high: 1.5
+  low: 1.5
+  close: 1.5
+  pre_close: 1.5
+  change: 1.5
+  pct_chg: 1.5
+  vol: 1.5
+  amount: 1.5
+
+two:
+  ts_code: MyString
+  trade_date: MyString
+  open: 1.5
+  high: 1.5
+  low: 1.5
+  close: 1.5
+  pre_close: 1.5
+  change: 1.5
+  pct_chg: 1.5
+  vol: 1.5
+  amount: 1.5

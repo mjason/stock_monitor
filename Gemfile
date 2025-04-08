@@ -45,6 +45,7 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 
   gem "redis"
+  gem 'dotenv'
 end
 
 group :development do
@@ -69,3 +70,7 @@ gem "breadcrumbs_on_rails", "~> 4.1"
 gem "http", "~> 5.2"
 
 gem "mission_control-jobs", "~> 1.0"
+
+gem "technical-analysis", "~> 0.2.4"
+
+gem "polars-df", "~> 0.17.0"

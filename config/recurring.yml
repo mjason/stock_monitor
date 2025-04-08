@@ -20,6 +20,11 @@ default: &default
     queue: background
     schedule: at 4pm every day
 
+  sync_positions:
+    class: FetchStockPositionsJob
+    queue: background
+    schedule: every 3 seconds
+
 development:
   <<: *default
 

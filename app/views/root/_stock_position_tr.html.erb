@@ -1,0 +1,11 @@
+<tr id="<%= dom_id(position) %>">
+  <th><%= position.id %></th>
+  <td><%= position.stock_name %></td>
+  <td><%= position.stock_code %></td>
+  <td><%= number_to_currency position.last_price, unit: "" %></td>
+  <td><%= number_to_currency position.cost_price, unit: "" %></td>
+  <td class="<%= position.profit_loss > 0 ? 'text-red-400' : 'text-green-400' %>">
+    <%= number_to_currency position.profit_loss, unit: "" %>
+  </td>
+  <td><%= position.available_quantity %></td>
+</tr>

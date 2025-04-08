@@ -32,9 +32,15 @@
       <div class="divider divider-horizontal"></div>
 
       <%= f.select :security_type,
-                   [%w[请选择类型 -1], %w[股票 stock], %w[ETF etf], %w[可转债 convertible_bond]],
-                   {disabled: -1, selected: (strategy.security_type || -1)},
+                   [%w[股票 stock], %w[ETF etf], %w[可转债 convertible_bond]],
+                   { prompt: "选择类型" },
                    class: "select" %>
+      <div class="divider divider-horizontal"></div>
+
+      <%= f.collection_select :stock_position_id,
+                              Current.user.stock_positions, :id, :stock_name,
+                              { prompt: "关联持仓" }, class: 'select' %>
+
       <div class="divider divider-horizontal"></div>
 
       <%= f.label :active, class: "fieldset-label" do %>

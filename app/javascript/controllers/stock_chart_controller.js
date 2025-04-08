@@ -178,8 +178,12 @@ export default class extends Controller {
   }
 
   // 解析ISO日期为图表格式
-  parseTimeToBarTime(isoTime) {
-    const date = new Date(isoTime)
+  parseTimeToBarTime(dateString) {
+    const year = dateString.substring(0, 4);
+    const month = dateString.substring(4, 6);
+    const day = dateString.substring(6, 8);
+
+    const date = new Date(year, month - 1, day)
     return {
       day: date.getUTCDate(),
       month: date.getUTCMonth() + 1, // 月份从0开始，所以需要+1

@@ -5,7 +5,7 @@ class StockStrategiesController < ApplicationController
   before_action :set_stock_strategy, only: [:show, :edit, :update, :destroy]
 
   def index
-    @stock_strategies = StockStrategy.all
+    @stock_strategies = Current.user.stock_strategies
   end
 
   def show
@@ -24,11 +24,11 @@ class StockStrategiesController < ApplicationController
   end
 
   def new
-    @stock_strategy = StockStrategy.new
+    @stock_strategy = Current.user.stock_strategies.new
   end
 
   def create
-    @stock_strategy = StockStrategy.new(stock_strategy_params)
+    @stock_strategy = Current.user.stock_strategies.new(stock_strategy_params)
 
     if @stock_strategy.save
       redirect_to @stock_strategy, notice: "股票策略创建成功"
@@ -45,10 +45,10 @@ class StockStrategiesController < ApplicationController
 
   private
   def stock_strategy_params
-    params.expect(stock_strategy: [ :name, :stock_symbol, :security_type, :code, :active ])
+    params.expect(stock_strategy: [ :name, :stock_symbol, :security_type, :code, :active, :stock_position_id ])
   end
 
   def set_stock_strategy
-    @stock_strategy = StockStrategy.find(params[:id])
+    @stock_strategy = Current.user.stock_strategies.find(params[:id])
   end
 end

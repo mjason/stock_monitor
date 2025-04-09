@@ -12,4 +12,15 @@ module StockUtils
       :cn_stock
     end
   end
+
+  def get_security_type(code)
+    case StockUtils.stock_type(code)
+    in :cn_etf
+      :fund
+    in :cn_convertible_bond
+     :convertible_bond
+    else
+      :stock
+    end
+  end
 end

@@ -7,5 +7,8 @@
   <td class="<%= position.profit_loss > 0 ? 'text-red-400' : 'text-green-400' %>">
     <%= number_to_currency position.profit_loss, unit: "" %>
   </td>
+  <td class="<%= position.profit_loss > 0 ? 'text-red-400' : 'text-green-400' %>">
+    <%= number_to_percentage position.profit_loss_ratio, precision: 0 %>
+  </td>
   <td><%= position.available_quantity %></td>
 </tr>

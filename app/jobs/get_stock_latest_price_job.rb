@@ -12,5 +12,10 @@ class GetStockLatestPriceJob < ApplicationJob
     strategies.each do |strategy|
       strategy.add_price(stock_data[strategy.stock_symbol.upcase])
     end
+
+    # 运行策略
+    strategies.each do |strategy|
+      strategy.run_strategy
+    end
   end
 end

@@ -1,14 +1,13 @@
 class StockStrategy < ApplicationRecord
-  # 枚举定义
-  enum :security_type, { stock: 0, etf: 1, convertible_bond: 2 }
-
   belongs_to :user, optional: true
   belongs_to :stock_position, optional: true
+
+  alias_attribute :stock_symbol, :ts_code
+  alias_attribute :price_log, :prices
 
   # 验证
   validates :name, presence: true
   validates :stock_symbol, presence: true, uniqueness: true
-  validates :security_type, presence: true
 
   after_update_commit do
     broadcast_replace_to "stock_strategies_index",
@@ -21,6 +20,24 @@ class StockStrategy < ApplicationRecord
     StockDailyPrice.sync_all stock_symbol
   end
 
+  def run_strategy
+    StrategyVm.new(self).run
+    if self.changed?
+      new_logs = logs - logs_was
+      save.tap do
+        new_logs.reverse.each do |log|
+          broadcast_prepend_to "stock_strategies_show",
+                               target: "strategy-logs",
+                               partial: "stock_strategies/log",
+                               locals: { log: log }
+          end
+      end
+    end
+  end
+
+  def run_strategy_generator
+    StrategyGenService.new(self)
+  end
 
   # 日志方法 - 添加新价格到价格日志
   def add_price(price)
@@ -55,7 +72,7 @@ class StockStrategy < ApplicationRecord
     StockDailyPrice.where(ts_code: stock_symbol)
                    .order(trade_date: :asc).map do |data|
       {
-        time: data.trade_date,
+        time: Time.parse(data.trade_date),
         open: data.open,
         high: data.high,
         low: data.low,

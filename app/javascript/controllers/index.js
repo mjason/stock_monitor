@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import ClipboardController from "./clipboard_controller"
+application.register("clipboard", ClipboardController)
+
 import CodeEditorController from "./code_editor_controller"
 application.register("code-editor", CodeEditorController)
 

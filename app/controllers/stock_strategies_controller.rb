@@ -2,7 +2,7 @@ class StockStrategiesController < ApplicationController
   add_breadcrumb "主页", :root_path
   add_breadcrumb "策略", :stock_strategies_path
 
-  before_action :set_stock_strategy, only: [:show, :edit, :update, :destroy]
+  before_action :set_stock_strategy, only: [ :show, :edit, :update, :destroy, :logs ]
 
   def index
     @stock_strategies = Current.user.stock_strategies
@@ -10,6 +10,11 @@ class StockStrategiesController < ApplicationController
 
   def show
     add_breadcrumb "#{@stock_strategy.name}", stock_strategy_path(@stock_strategy)
+  end
+
+  def logs
+    add_breadcrumb "#{@stock_strategy.name}", stock_strategy_path(@stock_strategy)
+    add_breadcrumb "日志", logs_stock_strategy_path(@stock_strategy)
   end
 
   def edit
@@ -45,7 +50,7 @@ class StockStrategiesController < ApplicationController
 
   private
   def stock_strategy_params
-    params.expect(stock_strategy: [ :name, :stock_symbol, :security_type, :code, :active, :stock_position_id ])
+    params.expect(stock_strategy: [ :name, :stock_symbol, :code, :active, :stock_position_id ])
   end
 
   def set_stock_strategy

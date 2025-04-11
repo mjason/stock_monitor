@@ -17,6 +17,7 @@ module StockMonitor
     config.autoload_lib(ignore: %w[assets tasks])
 
     config.time_zone = "Beijing"
+    config.i18n.default_locale = :"zh-CN"
 
     # Configuration for the application, engines, and railties goes here.
     #

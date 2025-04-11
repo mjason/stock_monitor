@@ -11,4 +11,9 @@
     <%= number_to_percentage position.profit_loss_ratio, precision: 0 %>
   </td>
   <td><%= position.available_quantity %></td>
+  <td>
+    <% if position.stock_strategy %>
+      <%= link_to "view", [ :logs, position.stock_strategy], class: "link link-secondary" %>
+    <% end %>
+  </td>
 </tr>

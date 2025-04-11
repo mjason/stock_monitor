@@ -41,7 +41,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_08_152823) do
   create_table "stock_positions", force: :cascade do |t|
     t.integer "account_type"
     t.string "account_number"
-    t.string "stock_code"
+    t.string "ts_code"
     t.integer "holding_quantity"
     t.integer "available_quantity"
     t.decimal "opening_price"
@@ -62,18 +62,18 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_08_152823) do
 
   create_table "stock_strategies", force: :cascade do |t|
     t.string "name", null: false
-    t.string "stock_symbol", null: false
-    t.integer "security_type", default: 0
+    t.string "ts_code", null: false
     t.text "code"
-    t.json "price_log", default: []
+    t.json "prices", default: []
     t.boolean "active", default: true
+    t.json "logs", default: []
     t.integer "user_id"
     t.integer "stock_position_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_stock_strategies_on_name"
     t.index ["stock_position_id"], name: "index_stock_strategies_on_stock_position_id"
-    t.index ["stock_symbol"], name: "index_stock_strategies_on_stock_symbol"
+    t.index ["ts_code"], name: "index_stock_strategies_on_ts_code"
     t.index ["user_id"], name: "index_stock_strategies_on_user_id"
   end
 

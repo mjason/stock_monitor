@@ -112,6 +112,15 @@ GEM
     erubi (1.13.1)
     et-orbi (1.2.11)
       tzinfo
+    event_stream_parser (1.0.0)
+    faraday (2.13.0)
+      faraday-net_http (>= 2.0, < 3.5)
+      json
+      logger
+    faraday-multipart (1.1.0)
+      multipart-post (~> 2.0)
+    faraday-net_http (3.4.0)
+      net-http (>= 0.5.0)
     ffi (1.17.1-aarch64-linux-gnu)
     ffi (1.17.1-aarch64-linux-musl)
     ffi (1.17.1-arm-linux-gnu)
@@ -191,7 +200,10 @@ GEM
       stimulus-rails
       turbo-rails
     msgpack (1.8.0)
+    multipart-post (2.4.1)
     mutex_m (0.3.0)
+    net-http (0.6.0)
+      uri
     net-imap (0.5.6)
       date
       net-protocol
@@ -226,19 +238,6 @@ GEM
     parser (3.3.7.4)
       ast (~> 2.4.1)
       racc
-    polars-df (0.17.0)
-      bigdecimal
-      rb_sys
-    polars-df (0.17.0-aarch64-linux)
-      bigdecimal
-    polars-df (0.17.0-aarch64-linux-musl)
-      bigdecimal
-    polars-df (0.17.0-arm64-darwin)
-      bigdecimal
-    polars-df (0.17.0-x86_64-linux)
-      bigdecimal
-    polars-df (0.17.0-x86_64-linux-musl)
-      bigdecimal
     pp (0.6.2)
       prettyprint
     prettyprint (0.2.0)
@@ -287,6 +286,9 @@ GEM
     rails-html-sanitizer (1.6.2)
       loofah (~> 2.21)
       nokogiri (>= 1.15.7, != 1.16.7, != 1.16.6, != 1.16.5, != 1.16.4, != 1.16.3, != 1.16.2, != 1.16.1, != 1.16.0.rc1, != 1.16.0)
+    rails-i18n (8.0.1)
+      i18n (>= 0.7, < 2)
+      railties (>= 8.0.0, < 9)
     railties (8.0.2)
       actionpack (= 8.0.2)
       activesupport (= 8.0.2)
@@ -297,9 +299,6 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.2.1)
-    rake-compiler-dock (1.9.1)
-    rb_sys (0.9.111)
-      rake-compiler-dock (= 1.9.1)
     rdoc (6.13.1)
       psych (>= 4.0.0)
     redis (5.3.0)
@@ -338,6 +337,10 @@ GEM
       rubocop (>= 1.72)
       rubocop-performance (>= 1.24)
       rubocop-rails (>= 2.30)
+    ruby-openai (8.1.0)
+      event_stream_parser (>= 0.3.0, < 2.0.0)
+      faraday (>= 1)
+      faraday-multipart (>= 1)
     ruby-progressbar (1.13.0)
     rubyzip (2.4.1)
     securerandom (0.4.1)
@@ -443,12 +446,13 @@ DEPENDENCIES
   jbuilder
   kamal
   mission_control-jobs (~> 1.0)
-  polars-df (~> 0.17.0)
   propshaft
   puma (>= 5.0)
   rails (~> 8.0.2)
+  rails-i18n (~> 8.0.0)
   redis
   rubocop-rails-omakase
+  ruby-openai (~> 8.1)
   selenium-webdriver
   solid_cable
   solid_cache

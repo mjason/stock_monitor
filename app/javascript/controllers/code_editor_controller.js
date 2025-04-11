@@ -36,6 +36,11 @@ export default class extends Controller {
       automaticLayout: true,
       theme: this.themeValue,
       fontSize: 18,
+      value: this.codeTarget.value,
+      tabSize: 2,
+      insertSpaces: true,
+      detectIndentation: false,
+      useTabStops: true
     })
 
     this.editor.onDidChangeModelContent(() => {

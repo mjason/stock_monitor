@@ -13,7 +13,7 @@ default: &default
   get_stock_latest_price:
     class: GetStockLatestPriceJob
     queue: background
-    schedule: every 1 minute
+    schedule: every 3 seconds
 
   sync_stock_histories_price:
     class: FetchStockHistoriesJob
@@ -24,6 +24,11 @@ default: &default
     class: FetchStockPositionsJob
     queue: background
     schedule: every 3 seconds
+
+  remove_deprecated_holdings:
+    class: RemoveDeprecatedHoldingsJob
+    queue: background
+    schedule: at 8am every day
 
 development:
   <<: *default

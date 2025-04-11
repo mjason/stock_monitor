@@ -121,24 +121,24 @@ class AStockTradingCost
   # 计算佣金
   def calculate_commission(amount)
     commission = amount * @commission_rate
-    [commission, @min_commission].max
+    [ commission, @min_commission ].max
   end
 
   # 计算交易所经手费
   def calculate_exchange_fee(amount, exchange, security_type)
     # 根据证券类型和交易所选择费率
     rate = case security_type
-           when :stock
-             exchange == :sh ? SH_EXCHANGE_FEE_RATE : SZ_EXCHANGE_FEE_RATE
-           when :fund
-             0.00004  # 基金经手费率 0.004%
-           when :bond
-             0.0      # 债券经手费 2022年7月1日至2025年12月31日暂免
-           when :convertible_bond
-             0.00004  # 可转债经手费率 0.004%
-           else
-             exchange == :sh ? SH_EXCHANGE_FEE_RATE : SZ_EXCHANGE_FEE_RATE
-           end
+    when :stock
+      exchange == :sh ? SH_EXCHANGE_FEE_RATE : SZ_EXCHANGE_FEE_RATE
+    when :fund
+      0.00004  # 基金经手费率 0.004%
+    when :bond
+      0.0      # 债券经手费 2022年7月1日至2025年12月31日暂免
+    when :convertible_bond
+      0.00004  # 可转债经手费率 0.004%
+    else
+      exchange == :sh ? SH_EXCHANGE_FEE_RATE : SZ_EXCHANGE_FEE_RATE
+    end
 
     amount * rate
   end
@@ -148,7 +148,7 @@ class AStockTradingCost
     case exchange
     when :sh
       fee = amount * SH_TRANSFER_FEE_RATE
-      [fee, SH_MIN_TRANSFER_FEE].max
+      [ fee, SH_MIN_TRANSFER_FEE ].max
     when :sz
       amount * SZ_TRANSFER_FEE_RATE
     else

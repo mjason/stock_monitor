@@ -31,12 +31,6 @@
 
       <div class="divider divider-horizontal"></div>
 
-      <%= f.select :security_type,
-                   [%w[股票 stock], %w[ETF etf], %w[可转债 convertible_bond]],
-                   { prompt: "选择类型" },
-                   class: "select" %>
-      <div class="divider divider-horizontal"></div>
-
       <%= f.collection_select :stock_position_id,
                               Current.user.stock_positions, :id, :stock_name,
                               { prompt: "关联持仓" }, class: 'select' %>
@@ -51,6 +45,20 @@
       <div class="divider divider-horizontal"></div>
 
       <%= f.submit class: "btn btn-primary" %>
+
+      <div class="divider divider-horizontal"></div>
+
+      <div data-controller="clipboard"
+           data-clipboard-confirm-value="Done"
+           data-clipboard-delay-ms-value="3000">
+        <div data-clipboard-target="content" class="hidden">
+          <%= StrategyGenService.new(strategy).prompt %>
+        </div>
+
+        <a data-action="clipboard#copy"
+                data-clipboard-target="button"
+                class="btn">Copy</a>
+      </div>
 
     </div>
 

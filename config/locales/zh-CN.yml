@@ -1,0 +1,4 @@
+zh-CN:
+  activerecord:
+    models:
+      stock_strategy: 监控策略

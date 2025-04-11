@@ -3,7 +3,7 @@ class CreateStockPositions < ActiveRecord::Migration[8.0]
     create_table :stock_positions do |t|
       t.integer :account_type
       t.string :account_number
-      t.string :stock_code
+      t.string :ts_code
       t.integer :holding_quantity
       t.integer :available_quantity
       t.decimal :opening_price

@@ -17,5 +17,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "root#index"
 
-  resources :stock_strategies
+  resources :stock_strategies do
+    member do
+      get :logs
+    end
+  end
 end

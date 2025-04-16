@@ -87,4 +87,7 @@ Rails.application.configure do
   #
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+
+  # TODO: 生产环境下关闭 forgery_protection_origin_check
+  config.action_controller.forgery_protection_origin_check = false  # 临时解决方案
 end

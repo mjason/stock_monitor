@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Qmt
+module QmtModel
   class Orders < Base
     # @!attribute [Qmt::OrderSummary] order_summaries 订单列表
     def initialize(order_summaries)

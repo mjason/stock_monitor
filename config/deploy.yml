@@ -10,7 +10,7 @@ ssh:
 # Deploy to these servers.
 servers:
   web:
-    - 10.43.142.62
+    - 8.138.180.246
   # job:
   #   hosts:
   #     - 192.168.0.1

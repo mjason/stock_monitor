@@ -11,10 +11,10 @@ ssh:
 servers:
   web:
     - 8.138.180.246
-  # job:
-  #   hosts:
-  #     - 192.168.0.1
-  #   cmd: bin/jobs
+  job:
+   hosts:
+     - 8.138.180.246
+   cmd: bin/jobs
 
 # Enable SSL auto certification via Let's Encrypt and allow for multiple apps on a single web server.
 # Remove this section when using multiple web servers and ensure you terminate SSL at your load balancer.

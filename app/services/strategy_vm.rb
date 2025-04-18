@@ -94,4 +94,12 @@ class StrategyVm
     end
   end
 
+  # 发送通知
+  def notify(message)
+    Notification.new.send(
+      title: "#{@strategy.name} 通知 - #{Time.now.strftime("%Y-%m-%d %H:%M:%S")}",
+      desp: message,
+      tags: "#{@strategy.name}|策略通知",)
+  end
+
 end

@@ -46,6 +46,8 @@ env:
     SOLID_QUEUE_IN_PUMA: true
     TUSHARE_API_KEY: 5764130045754fb99f8a2b3b245de6621475dab1470ebc75fa7dd8bf
     STOCK_HOST: "http://172.20.104.150:3544"
+    FT07_UID: 6929
+    FT07_SEND_KEY: sctp6929t6qnl2ruhcv4oz2132xdqke
 
     # Set number of processes dedicated to Solid Queue (default: 1)
     # JOB_CONCURRENCY: 3

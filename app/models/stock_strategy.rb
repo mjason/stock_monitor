@@ -26,7 +26,7 @@ class StockStrategy < ApplicationRecord
       new_logs = logs - logs_was
       save.tap do
         new_logs.reverse.each do |log|
-          broadcast_prepend_to "stock_strategies_show",
+          broadcast_prepend_to "stock_strategies_show_#{id}",
                                target: "strategy-logs",
                                partial: "stock_strategies/log",
                                locals: { log: log }

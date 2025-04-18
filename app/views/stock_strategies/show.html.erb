@@ -5,7 +5,7 @@
       <span class="font-medium"><%= @stock_strategy.name %> - <%= @stock_strategy.latest_price %></span>
     </div>
   </div>
-  <% cache ["stock_price_chart", @stock_strategy.id], expires_in: 1.hour do %>
+  <% cache ["stock_price_chart", @stock_strategy.id], expires_in: 1.minute do %>
     <%= render partial: "stock_price_chart",
                locals: { stock_data: @stock_strategy.stock_history_data.to_json } %>
   <% end %>

@@ -9,10 +9,29 @@
 #     priority: 2
 #     schedule: at 5am every day
 
-#default: &default
+default: &default
+#  get_stock_latest_price:
+#    class: GetStockLatestPriceJob
+#    queue: background
+#    schedule: every 3 seconds
 
-#development:
-#  <<: *default
+#  sync_stock_histories_price:
+#    class: FetchStockHistoriesJob
+#    queue: background
+#    schedule: at 4pm every day
 
-#production:
-#  <<: *default
+  sync_positions:
+    class: FetchStockPositionsJob
+    queue: background
+    schedule: every 3 seconds
+
+#  remove_deprecated_holdings:
+#    class: RemoveDeprecatedHoldingsJob
+#    queue: background
+#    schedule: at 8am every day
+
+development:
+  <<: *default
+
+production:
+  <<: *default

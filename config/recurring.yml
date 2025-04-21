@@ -23,7 +23,7 @@ default: &default
   sync_positions:
     class: FetchStockPositionsJob
     queue: background
-    schedule: every 3 seconds
+    schedule: at 5am every day
 
 #  remove_deprecated_holdings:
 #    class: RemoveDeprecatedHoldingsJob

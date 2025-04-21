@@ -22,4 +22,6 @@ Rails.application.routes.draw do
       get :logs
     end
   end
+
+  resources :completions, only: [ :create ]
 end

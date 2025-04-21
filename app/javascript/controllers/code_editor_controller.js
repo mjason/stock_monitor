@@ -1,5 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 import * as monaco from 'monaco-editor';
+import {registerCompletion} from 'monacopilot';
 
 import jsonWorker from 'monaco-editor/esm/vs/language/json/json.worker?worker'
 import cssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker'
@@ -49,6 +50,36 @@ export default class extends Controller {
 
     this.element.closest('form')?.addEventListener('submit', () => {
       this.codeTarget.value = this.editor.getValue()
+    })
+  }
+
+  initCompletion() {
+    registerCompletion(monaco, this.editor, {
+      language: "ruby",
+      endpoint: "/completions",
+      requestHandler: async ({endpoint, body}) => {
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content
+          },
+          body: JSON.stringify(body)
+        });
+
+        const data = await response.json()
+
+        console.log(data)
+
+        // Process and transform the response
+        const processedCompletion = data.text
+            .trim()
+            .replace(/\t/g, '    ') // Convert tabs to spaces
+
+        return {
+          completion: processedCompletion,
+        }
+      }
     })
   }
 

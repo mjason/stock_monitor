@@ -41,15 +41,19 @@ class FetchStockPositionsJob < ApplicationJob
         user: user
       )
 
-      p.update holding_quantity: position.holding_quantity,
-               opening_price: position.opening_price,
-               market_value: position.market_value,
-               frozen_quantity: position.frozen_quantity,
-               shares_in_transit: position.in_transit_shares,
-               yesterday_shares: position.yesterday_holding,
-               cost_price: position.cost_price,
-               available_quantity: position.available_quantity,
-               last_price: ticks[position.security_code].last_price
+      record = {
+        holding_quantity: position.holding_quantity,
+        opening_price: position.opening_price,
+        market_value: position.market_value,
+        frozen_quantity: position.frozen_quantity,
+        shares_in_transit: position.in_transit_shares,
+        yesterday_shares: position.yesterday_holding,
+        cost_price: position.cost_price,
+        available_quantity: position.available_quantity,
+        last_price: ticks[position.security_code]&.last_price
+      }.compact
+
+      p.update record
     end
 
     Turbo::StreamsChannel.broadcast_replace_to "stock_positions_index",

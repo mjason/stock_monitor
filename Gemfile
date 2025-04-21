@@ -74,4 +74,3 @@ gem "mission_control-jobs", "~> 1.0"
 gem "technical-analysis", "~> 0.2.4"
 
 gem 'rails-i18n', '~> 8.0.0'
-gem "ruby-openai", "~> 8.1"

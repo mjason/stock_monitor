@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_08_152823) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_18_062154) do
   create_table "sessions", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "ip_address"
@@ -71,6 +71,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_08_152823) do
     t.integer "stock_position_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "blockly_xml"
     t.index ["name"], name: "index_stock_strategies_on_name"
     t.index ["stock_position_id"], name: "index_stock_strategies_on_stock_position_id"
     t.index ["ts_code"], name: "index_stock_strategies_on_ts_code"

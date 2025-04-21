@@ -104,7 +104,6 @@ builder:
 accessories:
   redis:
    image: bitnami/redis:7.0
-   user: "${UID}:${GID}"
    env:
      secret:
        - REDIS_PASSWORD

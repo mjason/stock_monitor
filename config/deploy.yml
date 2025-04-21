@@ -115,6 +115,7 @@ accessories:
        REDIS_TLS_CA_FILE: /tls/ca.crt
        REDIS_TLS_ENABLED: yes
        REDIS_TLS_PORT: 6379
+   host: "8.138.180.246"
    port: "6379:6379"
    directories:
      - data:/data

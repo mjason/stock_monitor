@@ -2,6 +2,11 @@
 
 class ApplicationSubscriber
 
+  attr_reader :logger
+  def initialize
+    @logger = ActiveSupport::Logger.new($stdout)
+  end
+
   def run
     Rails.autoloaders.main.eager_load_dir("app/subscribers")
 

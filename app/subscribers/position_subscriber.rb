@@ -4,7 +4,7 @@ class PositionSubscriber < ApplicationSubscriber
   channel "positions"
 
   def receive(msg)
-    puts "Received message: #{msg}"
+    logger.info "Received message: #{msg}"
     positions = QmtModel::Holding.from_api_response JSON.parse(msg)
     t_client = TushareClient.new
 

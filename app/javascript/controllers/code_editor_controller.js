@@ -53,36 +53,6 @@ export default class extends Controller {
     })
   }
 
-  initCompletion() {
-    registerCompletion(monaco, this.editor, {
-      language: "ruby",
-      endpoint: "/completions",
-      requestHandler: async ({endpoint, body}) => {
-        const response = await fetch(endpoint, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content
-          },
-          body: JSON.stringify(body)
-        });
-
-        const data = await response.json()
-
-        console.log(data)
-
-        // Process and transform the response
-        const processedCompletion = data.text
-            .trim()
-            .replace(/\t/g, '    ') // Convert tabs to spaces
-
-        return {
-          completion: processedCompletion,
-        }
-      }
-    })
-  }
-
   initWorker() {
     self.MonacoEnvironment = {
       getWorker: function (workerId, label) {

@@ -57,9 +57,13 @@ module QmtModel
     #   @return [Float] 盈亏比例，当前持仓的浮动盈亏比例
     attr_reader :profit_loss_ratio
 
+    # @!attribute [r] last_price
+    #   @return [Float] 最新价格，当前股票的最新交易价格
+    attr_reader :last_price
+
     def initialize(account_type:, funds_account:, security_code:, holding_quantity:,
                    available_quantity:, opening_price:, market_value:, frozen_quantity:,
-                   in_transit_shares:, yesterday_holding:, cost_price:, profit_loss:, profit_loss_ratio:)
+                   in_transit_shares:, yesterday_holding:, cost_price:, profit_loss:, profit_loss_ratio:, last_price:)
       @account_type = account_type
       @funds_account = funds_account
       @security_code = security_code
@@ -73,6 +77,7 @@ module QmtModel
       @cost_price = cost_price
       @profit_loss = profit_loss
       @profit_loss_ratio = profit_loss_ratio
+      @last_price = last_price
     end
 
     def self.from_api_response(response)
@@ -90,7 +95,8 @@ module QmtModel
           yesterday_holding: holding["昨夜拥股"].to_i,
           cost_price: holding["成本价"].to_f,
           profit_loss: holding["盈亏"].to_f,
-          profit_loss_ratio: holding["盈亏比例"].to_f
+          profit_loss_ratio: holding["盈亏比例"].to_f,
+          last_price: holding["最新价格"].to_f,
         )
       end
     end
@@ -109,7 +115,8 @@ module QmtModel
         yesterday_holding: @yesterday_holding,
         cost_price: @cost_price,
         profit_loss: @profit_loss,
-        profit_loss_ratio: @profit_loss_ratio
+        profit_loss_ratio: @profit_loss_ratio,
+        last_price: @last_price,
       }
     end
 

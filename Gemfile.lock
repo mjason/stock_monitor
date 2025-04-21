@@ -127,6 +127,8 @@ GEM
       raabro (~> 1.4)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    hiredis-client (0.23.1)
+      redis-client (= 0.23.1)
     http (5.2.0)
       addressable (~> 2.8)
       base64 (~> 0.1)
@@ -424,8 +426,10 @@ DEPENDENCIES
   brakeman
   breadcrumbs_on_rails (~> 4.1)
   capybara
+  connection_pool
   debug
   dotenv
+  hiredis-client
   http (~> 5.2)
   jbuilder
   kamal

@@ -2,3 +2,4 @@
 vite: bin/vite dev
 web: bin/rails s
 worker: bin/jobs start
+subscriber: bin/subscriber

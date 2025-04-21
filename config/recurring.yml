@@ -34,8 +34,8 @@ development:
   <<: *default
 
 production:
-  <<: *default
-  get_stock_latest_price:
-    class: GetStockLatestPriceJob
-    queue: background
-    schedule: every 3 seconds
+#  <<: *default
+#  get_stock_latest_price:
+#    class: GetStockLatestPriceJob
+#    queue: background
+#    schedule: every 3 seconds

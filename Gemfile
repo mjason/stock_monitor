@@ -44,7 +44,6 @@ group :development, :test do
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
 
-  gem "redis"
   gem 'dotenv'
 end
 
@@ -74,3 +73,7 @@ gem "mission_control-jobs", "~> 1.0"
 gem "technical-analysis", "~> 0.2.4"
 
 gem 'rails-i18n', '~> 8.0.0'
+
+gem "redis"
+gem "hiredis-client"
+gem "connection_pool"

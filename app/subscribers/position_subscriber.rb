@@ -53,6 +53,8 @@ class PositionSubscriber < ApplicationSubscriber
       }.compact
 
       p.update record
+
+      StockPosition.remove_deprecated_holdings! positions
     end
 
     Turbo::StreamsChannel.broadcast_replace_to "stock_positions_index",

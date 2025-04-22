@@ -28,9 +28,8 @@ class StockPosition < ApplicationRecord
 
   class << self
     # 清理过期的持仓记录
-    def remove_deprecated_holdings!
+    def remove_deprecated_holdings!(positions)
       # 获取券商接口的真实持仓代码
-      positions = QmtClient.new.positions
       current_codes = positions.map(&:security_code)
 
       # 找出本地需要清理的持仓代码（存在于本地但不在券商接口返回列表中的）
